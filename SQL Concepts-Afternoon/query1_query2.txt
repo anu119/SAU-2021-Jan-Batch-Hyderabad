@@ -1,0 +1,14 @@
+-- Query-1:query to retrieve the most sold product per day in a Chennai in last week.
+
+SELECT T.DOP, P.PNAME, T.MAX_UNITS FROM PRODUCT P JOIN 
+	(SELECT TEMP.DOP, TEMP.PCODE, T.MAX_UNITS FROM TEMP JOIN
+		(SELECT DOP, MAX(UNITS) MAX_UNITS FROM TEMP GROUP BY DOP) T
+			ON T.DOP = TEMP.DOP AND TEMP.UNITS = T.MAX_UNITS) T ON P.PCODE = T.PCODE;
+
+
+-- Query-2:list all the sales persons details along with the count of products sold by them (if any) till current date.
+
+SELECT SE.* , IFNULL(S.CNT,0) AS NO_OF_PRODUCT_SOLD FROM SALES_EXECUTIVE SE JOIN 
+	(SELECT SID, COUNT(PCODE) AS CNT FROM ORDER_PRODUCT OP JOIN 
+		ORDER_T OT ON OP.ORDER_ID = OT.ORDER_ID GROUP BY SID) S
+	ON SE.SID = S.SID;
