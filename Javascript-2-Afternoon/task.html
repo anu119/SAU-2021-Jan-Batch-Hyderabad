@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reduce Function</title>
+    </head>
+    <body>
+        <p>Check console for result!!!</p>
+        <script>
+            function customreduce(arr,redfn){
+                let ans=0;
+                for(let i=0;i<arr.length;i++)
+                {
+                    ans=redfn(ans,arr[i]);
+                }
+                return ans;
+            }
+            let arr=[1,2,3,4,5]
+            console.log("array is "+arr);
+            console.log(customreduce(arr,(res,fn)=>res+fn));
+        </script>
+    </body>
+</html>

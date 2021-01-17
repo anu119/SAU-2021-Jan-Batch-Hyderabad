@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TASK3</title>
+        <style>
+            div{
+                text-align: center;
+                margin: 5%;
+            }
+            input{
+                margin: 2%;
+                -webkit-text-stroke-width: medium;
+            }
+            #num1,#num2{
+                background-color: #e2d8d8;
+            }
+            #ans{
+                background-color: #4f7071;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <input id="num1" type="number" value="0">
+            <input id="num2" type="number" value="0">
+            <input id="ans" value="0" disabled><br>
+            <button onclick="add()">ADD</button>
+        </div>
+        <script>
+            function add(){
+                let a=document.getElementById("num1").value;
+                let b=document.getElementById("num2").value;
+                let res=Number(a)+Number(b)
+                document.getElementById('ans').value=res;
+            }
+        </script>
+    </body>
+</html>
